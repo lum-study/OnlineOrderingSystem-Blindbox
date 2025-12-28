@@ -1,0 +1,29 @@
+/* Local Font Definitions */
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('../fonts/space-mono/SpaceMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('../fonts/space-mono/SpaceMono-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Teko';
+  src: url('../fonts/teko/static/Teko-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Teko';
+  src: url('../fonts/teko/static/Teko-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}

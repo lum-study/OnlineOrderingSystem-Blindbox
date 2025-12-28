@@ -1,0 +1,336 @@
+/* product.css
+   Styles for product listing and details pages. */
+
+/* Ensure product cards work as links */
+a.product-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Product images in cards */
+.card-image {
+    background-color: #f5f5f5;
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.product-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+/* Category badge on card */
+.card-category-badge {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-size: 10px;
+    padding: 0.25rem 0.5rem;
+    font-weight: 700;
+    border: 1px solid var(--border-color);
+    z-index: 2;
+}
+
+/* Sold out overlay */
+.sold-out-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.sold-out-text {
+    font-size: 1.75rem;
+    color: #ffffff;
+    letter-spacing: 0.15em;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+    transform: rotate(-15deg);
+    border: 3px solid #ffffff;
+    padding: 0.75rem 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+/* Vibrate animation on hover */
+.product-card.sold-out:hover .sold-out-text {
+    animation: vibrate 0.3s linear infinite;
+}
+
+@keyframes vibrate {
+    0%, 100% { transform: rotate(-15deg) translate(0, 0); }
+    10% { transform: rotate(-15deg) translate(-2px, -2px); }
+    20% { transform: rotate(-15deg) translate(2px, 2px); }
+    30% { transform: rotate(-15deg) translate(-2px, 2px); }
+    40% { transform: rotate(-15deg) translate(2px, -2px); }
+    50% { transform: rotate(-15deg) translate(-2px, -2px); }
+    60% { transform: rotate(-15deg) translate(2px, 2px); }
+    70% { transform: rotate(-15deg) translate(-2px, 2px); }
+    80% { transform: rotate(-15deg) translate(2px, -2px); }
+    90% { transform: rotate(-15deg) translate(-2px, -2px); }
+}
+
+/* Sold out product card styling */
+.product-card.sold-out {
+    opacity: 0.85;
+    pointer-events: auto;
+}
+
+.product-card.sold-out .card-details {
+    opacity: 0.7;
+}
+
+.product-card.sold-out:hover {
+    opacity: 0.9;
+}
+
+/* Ensure grid layout matches home */
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .product-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1024px) {
+    .product-grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+/* Layout for sidebar + main content */
+.shop-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 8rem;
+    padding-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .shop-layout {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .sidebar {
+        width: 250px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 100px;
+    }
+
+    .main-content {
+        flex: 1;
+    }
+}
+
+/* Sidebar Styles */
+.sidebar-section {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-dim);
+    padding-bottom: 1.5rem;
+}
+
+.sidebar-section:last-child {
+    border-bottom: none;
+}
+
+.sidebar-section h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+}
+
+.search-form {
+    display: flex;
+    border: 1px solid var(--border-color);
+}
+
+.search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 0.5rem;
+    color: var(--text-color);
+    font-family: var(--font-main);
+    outline: none;
+}
+
+.search-btn {
+    background: var(--text-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 0 1rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.category-list li {
+    margin-bottom: 0.5rem;
+}
+
+.category-list a {
+    color: var(--accent-gray);
+    font-size: 0.9rem;
+    display: block;
+    padding: 0.25rem 0;
+}
+
+.category-list a:hover,
+.category-list a.active {
+    color: var(--text-color);
+    padding-left: 0.5rem;
+}
+
+/* Sort Bar */
+.sort-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.sort-label {
+    font-size: 0.875rem;
+    color: var(--accent-gray);
+}
+
+.sort-select {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0.5rem;
+    font-family: var(--font-main);
+    cursor: pointer;
+}
+
+.sort-select option {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Adjust shop section padding when inside layout */
+.shop-layout .shop-section {
+    padding: 0;
+    max-width: none;
+}
+
+.shop-layout .shop-header {
+    margin-bottom: 2rem;
+}
+
+/* Price Range Slider Container */
+.price-range-container {
+    padding: 0 0 20px;
+}
+
+.price-range-values {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.price-range-min-value,
+.price-range-max-value {
+    font-weight: 500;
+}
+
+/* Custom Range Slider */
+.price-range-slider {
+    position: relative;
+    height: 4px;
+    background: var(--bg-color);
+    border-radius: 2px;
+    margin: 20px 0;
+}
+
+.price-range-track {
+    position: absolute;
+    height: 100%;
+    background: var(--text-color);
+    border-radius: 2px;
+}
+
+.price-range-thumb {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--text-color);
+    border: 2px solid var(--text-color);
+    border-radius: 50%;
+    cursor: pointer;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    box-shadow: 0 2px 4px color-mix(in srgb, var(--border-color) 30%, transparent);
+    transition: transform 0.2s;
+}
+
+.price-range-thumb:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.price-range-thumb.active {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.price-range-min-thumb {
+    left: 0;
+}
+
+.price-range-max-thumb {
+    left: 100%;
+}
+
+/* Price Range Form */
+.price-range-form {
+    margin-top: 15px;
+}
+
+.price-range-apply {
+    width: 100%;
+    padding: 10px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid color-mix(in srgb, var(--text-color) 30%, transparent);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: var(--font-main);
+}
+
+.price-range-apply:hover {
+    background: var(--text-color);
+    color: var(--bg-color);
+}

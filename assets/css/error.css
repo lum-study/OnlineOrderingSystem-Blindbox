@@ -1,0 +1,215 @@
+/* error.css - Universal Error Page Styling */
+
+.error-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: var(--bg-color);
+    color: var(--text-color);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.error-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        var(--border-dim) 2px,
+        var(--border-dim) 4px
+    );
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.error-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    width: 100%;
+}
+
+.error-code {
+    font-family: var(--font-display);
+    font-size: clamp(6rem, 15vw, 12rem);
+    line-height: 1;
+    margin: 0;
+    color: var(--red-color);
+    text-shadow: 0 0 20px var(--red-color);
+    letter-spacing: 0.1em;
+    animation: glitch 3s infinite;
+}
+
+@keyframes glitch {
+    0%, 90%, 100% {
+        transform: translate(0);
+    }
+    92% {
+        transform: translate(-2px, 2px);
+    }
+    94% {
+        transform: translate(2px, -2px);
+    }
+    96% {
+        transform: translate(-2px, -2px);
+    }
+    98% {
+        transform: translate(2px, 2px);
+    }
+}
+
+.error-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin: 1rem 0;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.error-message {
+    font-family: var(--font-main);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: var(--accent-gray);
+    margin: 1.5rem 0 2.5rem;
+    line-height: 1.6;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.error-btn {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    text-decoration: none;
+    color: var(--text-color);
+    background: transparent;
+    border: 2px solid var(--border-color);
+    padding: 0.8rem 2.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.error-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--red-color);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.error-btn:hover::before {
+    left: 0;
+}
+
+.error-btn:hover {
+    border-color: var(--red-hover-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 20px var(--red-color);
+}
+
+.error-details {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-dim);
+}
+
+.error-details p {
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    color: var(--accent-gray);
+    margin: 0.5rem 0;
+}
+
+.error-icon {
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+.error-icon svg {
+    width: clamp(60px, 10vw, 80px);
+    height: clamp(60px, 10vw, 80px);
+    stroke: var(--red-color);
+    filter: drop-shadow(0 0 10px var(--red-color));
+}
+
+/* Scanline effect */
+.error-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(255, 255, 255, 0.02) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    animation: scanline 8s linear infinite;
+    z-index: 2;
+}
+
+@keyframes scanline {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .error-container {
+        padding: 1.5rem;
+    }
+    
+    .error-btn {
+        padding: 0.6rem 2rem;
+    }
+}
+
+/* Multiple button container */
+.error-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+}
+
+.error-btn.btn-secondary {
+    background: var(--border-color);
+    color: var(--bg-color);
+}
+
+.error-btn.btn-secondary::before {
+    background: var(--info-color);
+}
+
+.error-btn.btn-secondary:hover {
+    border-color: var(--info-color);
+    box-shadow: 0 0 20px var(--info-color);
+}
