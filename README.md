@@ -103,6 +103,7 @@ The application adopts a layered Model-View-Controller (MVC) and Front Controlle
 ## Key Features
 
 ### 1. Storefront & Catalog
+
 - **Cyberpunk / Pop Mart Visual Identity**: Neo-brutalist dark mode theme with neon accents, custom grid backgrounds, animated announcement marquees, and responsive CSS layouts.
 - **Dynamic Catalog Filtering & Sorting**:
   - Live price range filter computed from database minimum and maximum prices.
@@ -117,6 +118,7 @@ The application adopts a layered Model-View-Controller (MVC) and Front Controlle
   - Verified customer reviews with 1–5 star ratings, timestamped reviews, and customer-submitted photos.
 
 ### 2. Cart & Multi-Step Checkout
+
 - **Real-Time Shopping Cart**:
   - Add to cart, adjust quantities, or remove items with stock validation.
   - Immediate subtotal and total calculations.
@@ -138,6 +140,7 @@ The application adopts a layered Model-View-Controller (MVC) and Front Controlle
   - Dispatches HTML order confirmation emails via PHPMailer with embedded logo branding and the verification QR code.
 
 ### 3. Member Portal
+
 - **Profile Management**: Update full name, contact number, gender, date of birth, and change account username/password.
 - **Profile Photo Cropper**: Interactive modal to upload and crop profile avatars.
 - **Address Book**: Manage multiple delivery addresses with default selection.
@@ -150,6 +153,7 @@ The application adopts a layered Model-View-Controller (MVC) and Front Controlle
 - **Theme Preferences**: Toggle between Dark Mode and Light Mode, with preferences stored in the user's database profile.
 
 ### 4. Administrative Control Panel
+
 - **Executive Analytics Dashboard**:
   - Real-time customer acquisition metrics (total, today, this week, this month).
   - Product inventory status (active, inactive, out-of-stock, low-stock warnings ≤ 20 units).
@@ -179,6 +183,7 @@ The application adopts a layered Model-View-Controller (MVC) and Front Controlle
   - Audit logging (`activity_logs`) recording IP addresses, user agents, action types (login, failed login, lockouts, record modifications), and timestamps.
 
 ### 5. Security & Authentication Hardening
+
 - **Isolated Sessions**: Segregated session storage (`$_SESSION['member']` and `$_SESSION['admin']`) to prevent privilege escalation between customer and administrator accounts.
 - **Session Lifespans & Inactivity Timeouts**:
   - 30-minute inactivity timeout for customer sessions.
@@ -210,29 +215,29 @@ The database schema is defined in [`queryTable - BlindeDoos.sql`] with 21 relati
 
 ### Entity Relationship Overview
 
-| Table Name | Primary Key | Description |
-|---|---|---|
-| `user_data` | `user_id` | Customer personal information, profile photos, preferences, block & soft-delete flags. |
-| `user_logins` | `login_id` | Customer authentication credentials (bcrypt hash), lock status, email verification tokens. |
-| `staff_data` | `staff_id` | Employee profile details and status. |
-| `staff_logins` | `login_id` | Staff authentication credentials, administrative position/role, and lockout tracking. |
-| `verification_tokens` | `token_id` | Expiring tokens for email verification and password reset workflows. |
-| `user_addresses` | `address_id` | Customer shipping addresses with default address designations. |
-| `orders` | `order_id` | Order transactions, subtotal, tax amount, total amount, order status, and delivery address. |
-| `order_items` | `order_item_id` | Line items belonging to an order referencing blind box products and purchased prices. |
-| `payments` | `payment_id` | Payment records, methods (`card`, `cash`, `ewallet`, `others`), and transaction status. |
-| `refunds` | `refund_id` | Refund requests linked to payment records. |
-| `categories` | `category_id` | Product categories (e.g., Spy x Family, THE MONSTERS, CRYBABY, DIMOO, etc.). |
-| `blindbox` | `blindbox_id` | Blind box series records with prices, stock levels, and active/inactive status. |
-| `blindbox_images` | `image_id` | Image assets associated with blind box series. |
-| `products` | `product_id` | Individual character/figure variants contained within a blind box series. |
-| `product_images` | `image_id` | Variant images, including front cover flags (`is_front`). |
-| `carts` | `cart_id` | Customer active shopping carts. |
-| `cart_items` | `cart_item_id` | Items currently held in customer shopping carts with quantities. |
-| `blindbox_reviews` | `review_id` | Customer reviews and star ratings (1–5) linked to purchased order items. |
-| `review_images` | `image_id` | Image attachments uploaded by customers alongside product reviews. |
-| `activity_logs` | `activity_id` | System-wide audit logs tracking user/staff actions, IP addresses, and user agents. |
-| `wishlist` | `wishlist_id` | Customer bookmarked blind box products. |
+| Table Name            | Primary Key     | Description                                                                                 |
+| --------------------- | --------------- | ------------------------------------------------------------------------------------------- |
+| `user_data`           | `user_id`       | Customer personal information, profile photos, preferences, block & soft-delete flags.      |
+| `user_logins`         | `login_id`      | Customer authentication credentials (bcrypt hash), lock status, email verification tokens.  |
+| `staff_data`          | `staff_id`      | Employee profile details and status.                                                        |
+| `staff_logins`        | `login_id`      | Staff authentication credentials, administrative position/role, and lockout tracking.       |
+| `verification_tokens` | `token_id`      | Expiring tokens for email verification and password reset workflows.                        |
+| `user_addresses`      | `address_id`    | Customer shipping addresses with default address designations.                              |
+| `orders`              | `order_id`      | Order transactions, subtotal, tax amount, total amount, order status, and delivery address. |
+| `order_items`         | `order_item_id` | Line items belonging to an order referencing blind box products and purchased prices.       |
+| `payments`            | `payment_id`    | Payment records, methods (`card`, `cash`, `ewallet`, `others`), and transaction status.     |
+| `refunds`             | `refund_id`     | Refund requests linked to payment records.                                                  |
+| `categories`          | `category_id`   | Product categories (e.g., Spy x Family, THE MONSTERS, CRYBABY, DIMOO, etc.).                |
+| `blindbox`            | `blindbox_id`   | Blind box series records with prices, stock levels, and active/inactive status.             |
+| `blindbox_images`     | `image_id`      | Image assets associated with blind box series.                                              |
+| `products`            | `product_id`    | Individual character/figure variants contained within a blind box series.                   |
+| `product_images`      | `image_id`      | Variant images, including front cover flags (`is_front`).                                   |
+| `carts`               | `cart_id`       | Customer active shopping carts.                                                             |
+| `cart_items`          | `cart_item_id`  | Items currently held in customer shopping carts with quantities.                            |
+| `blindbox_reviews`    | `review_id`     | Customer reviews and star ratings (1–5) linked to purchased order items.                    |
+| `review_images`       | `image_id`      | Image attachments uploaded by customers alongside product reviews.                          |
+| `activity_logs`       | `activity_id`   | System-wide audit logs tracking user/staff actions, IP addresses, and user agents.          |
+| `wishlist`            | `wishlist_id`   | Customer bookmarked blind box products.                                                     |
 
 ### Custom ID Generation Scheme
 
@@ -272,29 +277,29 @@ Password123!
 
 ### Administrative & Staff Accounts (`/admin/login`)
 
-| Username | Role / Position | Email | Full Name |
-|---|---|---|---|
-| `admin` | `admin` | `admin@blindedoos.com` | Admin User |
-| `alicegreen` | `manager` | `alice.green@blindedoos.com` | Alice Green |
-| `bobwhite` | `stock_keeper` | `bob.white@blindedoos.com` | Bob White |
-| `charlieblack` | `support` | `charlie.black@blindedoos.com` | Charlie Black |
-| `ians` | `marketing` | `ian.s@blindedoos.com` | Ian Somerhalder |
-| `liamn` | `security` | `liam.n@blindedoos.com` | Liam Neeson |
-| `peterp` | `intern` | `peter.p@blindedoos.com` | Peter Parker |
+| Username       | Role / Position | Email                          | Full Name       |
+| -------------- | --------------- | ------------------------------ | --------------- |
+| `admin`        | `admin`         | `admin@blindedoos.com`         | Admin User      |
+| `alicegreen`   | `manager`       | `alice.green@blindedoos.com`   | Alice Green     |
+| `bobwhite`     | `stock_keeper`  | `bob.white@blindedoos.com`     | Bob White       |
+| `charlieblack` | `support`       | `charlie.black@blindedoos.com` | Charlie Black   |
+| `ians`         | `marketing`     | `ian.s@blindedoos.com`         | Ian Somerhalder |
+| `liamn`        | `security`      | `liam.n@blindedoos.com`        | Liam Neeson     |
+| `peterp`       | `intern`        | `peter.p@blindedoos.com`       | Peter Parker    |
 
-*(14 additional staff accounts from `SL0008` to `SL0021` are available in the SQL script).*
+_(14 additional staff accounts from `SL0008` to `SL0021` are available in the SQL script)._
 
 ### Member / Customer Accounts (`/login`)
 
-| Username | Email | Full Name | Verified |
-|---|---|---|---|
-| `johndoe` | `john@example.com` | John Doe | Yes |
-| `janesmith` | `jane@example.com` | Jane Smith | Yes |
-| `mikebrown` | `michael.brown@example.com` | Michael Brown | Yes |
-| `emilyd` | `emily.davis@example.com` | Emily Davis | Yes |
-| `chrisw` | `chris.wilson@example.com` | Chris Wilson | Yes |
+| Username    | Email                       | Full Name     | Verified |
+| ----------- | --------------------------- | ------------- | -------- |
+| `johndoe`   | `john@example.com`          | John Doe      | Yes      |
+| `janesmith` | `jane@example.com`          | Jane Smith    | Yes      |
+| `mikebrown` | `michael.brown@example.com` | Michael Brown | Yes      |
+| `emilyd`    | `emily.davis@example.com`   | Emily Davis   | Yes      |
+| `chrisw`    | `chris.wilson@example.com`  | Chris Wilson  | Yes      |
 
-*(17 additional member accounts from `UL0006` to `UL0022` are available in the SQL script).*
+_(17 additional member accounts from `UL0006` to `UL0022` are available in the SQL script)._
 
 ---
 
@@ -330,6 +335,7 @@ composer install
 ```
 
 This installs:
+
 - `stripe/stripe-php` (^19.0)
 - `phpmailer/phpmailer` (^7.0)
 - `chillerlan/php-qrcode` (^5.0)
@@ -341,17 +347,23 @@ This installs:
    ```bash
    mysql -u root -p < "queryTable - BlindeDoos.sql"
    ```
-   *(Or copy and execute the SQL contents directly in phpMyAdmin).*
+   _(Or copy and execute the SQL contents directly in phpMyAdmin)._
 3. This creates the database `online_shopping_db` along with all required tables, constraints, categories, products, orders, and test accounts.
 
 ### 4. Verify Folder Permissions
 
 Ensure the server has write permissions to the upload directories:
+
 - `assets/images/uploads/`
 - `assets/images/uploads/profile/`
 - `assets/images/uploads/reviews/`
 - `assets/images/uploads/BB/`
 - `uploads/`
+
+### 5. Load The Website
+
+- `http://localhost/online_shopping_system/`
+- `http://localhost/online_shopping_system/admin/login`
 
 ---
 
@@ -575,6 +587,7 @@ OnlineOrderingSystem-Blindbox/
 ### 1. XAMPP MySQL Fails to Start (InnoDB Corruption)
 
 If MySQL in XAMPP crashes on startup or reports table corrupted errors, follow the steps outlined in [`Fix xampp error`]:
+
 1. Stop MySQL from the XAMPP Control Panel.
 2. Navigate to `C:\xampp\mysql`.
 3. Rename the folder `data` to `data_old`.
@@ -586,6 +599,7 @@ If MySQL in XAMPP crashes on startup or reports table corrupted errors, follow t
 ### 2. URL Rewriting / 404 on Sub-Routes
 
 If visiting URLs like `/login`, `/cart`, or `/admin/dashboard` returns a 404 error:
+
 - Ensure Apache `mod_rewrite` is enabled in `httpd.conf` (`LoadModule rewrite_module modules/mod_rewrite.so`).
 - Verify `AllowOverride All` is configured in your Apache virtual host or directory configuration.
 - Check that `RewriteBase /online_shopping_system/` in `.htaccess` matches your folder name.

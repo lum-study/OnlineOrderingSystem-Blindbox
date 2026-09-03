@@ -14,7 +14,6 @@ $pageTitle = 'Forgot Password - Admin';
     <script src="<?= BASE_URL ?>assets/js/toast.js" defer></script>
     <script src="<?= BASE_URL ?>assets/js/admin_auth.js"></script>
     <script src="<?= BASE_URL ?>assets/js/input.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <div class="auth-page">
@@ -32,7 +31,7 @@ $pageTitle = 'Forgot Password - Admin';
                 <label>Email Address</label>
                 <?php html_email('email', 'placeholder="Enter your email"'); ?>
             </div>
-            <div class="g-recaptcha" data-sitekey="<?= RECAPTCHA_SITE_KEY ?>"></div>
+
             <button type="submit" class="auth-btn">Send Reset Link</button>
         </form>
 

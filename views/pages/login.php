@@ -11,7 +11,6 @@ include __DIR__ . '/../../includes/header.php';
 <head>
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/auth.css">
     <script src="<?= BASE_URL ?>assets/js/auth.js" defer></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <div class="auth-page">
     <div class="bg-grid"></div>
@@ -36,7 +35,7 @@ include __DIR__ . '/../../includes/header.php';
                     <?php html_checkbox('remember_me', '1'); ?> Remember me for 30 days
                 </label>
             </div>
-            <div class="g-recaptcha" data-sitekey="<?= RECAPTCHA_SITE_KEY ?>"></div>
+
             <button type="submit" class="auth-btn">Login</button>
         </form>
 

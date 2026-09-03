@@ -32,7 +32,6 @@ $pageTitle = 'Register';
 <head>
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/auth.css">
     <script src="<?= BASE_URL ?>assets/js/auth.js" defer></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <div class="auth-page">
@@ -88,7 +87,7 @@ $pageTitle = 'Register';
                     <?php html_select('gender', ['male' => 'Male', 'female' => 'Female', 'other' => 'Other'], '- Prefer not to say -'); ?>
                 </div>
             </div>
-            <div class="g-recaptcha" data-sitekey="<?= RECAPTCHA_SITE_KEY ?>"></div>
+
             <button type="submit" class="auth-btn">Register</button>
         </form>
 

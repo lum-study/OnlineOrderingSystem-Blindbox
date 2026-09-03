@@ -15,9 +15,9 @@ define('UPLOAD_DIR', __DIR__ . '/../uploads/');
 
 define('ASSETS_DIR', __DIR__ . '/../assets/');
 
-// reCAPTCHA keys
-define('RECAPTCHA_SITE_KEY', 'YOUR_RECAPTCHA_SITE_KEY');
-define('RECAPTCHA_SECRET_KEY', 'YOUR_RECAPTCHA_SECRET_KEY');
+// reCAPTCHA keys (Disabled)
+define('RECAPTCHA_SITE_KEY', '');
+define('RECAPTCHA_SECRET_KEY', '');
 
 // --- Lockout policy ---
 // Maximum number of failed login attempts before temporary lock

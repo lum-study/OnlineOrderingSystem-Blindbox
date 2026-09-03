@@ -24,7 +24,6 @@ $csrfToken = Security::generateCSRF();
     <script src="<?= BASE_URL ?>assets/js/toast.js" defer></script>
     <script src="<?= BASE_URL ?>assets/js/admin_auth.js"></script>
     <script src="<?= BASE_URL ?>assets/js/input.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -46,7 +45,7 @@ $csrfToken = Security::generateCSRF();
                     <label>Password</label>
                     <?php html_password('password', 'placeholder="Enter password"') ?>
                 </div>
-                <div class="g-recaptcha" data-sitekey="<?= RECAPTCHA_SITE_KEY ?>"></div>
+
                 <button type="submit" class="auth-btn">Login</button>
             </form>
             <div class="auth-links">

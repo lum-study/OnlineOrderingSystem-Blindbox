@@ -34,12 +34,6 @@ class AuthController
                 exit;
             }
 
-            // Verify reCAPTCHA
-            $recaptchaResponse = $_POST['g-recaptcha-response'] ?? '';
-            if (!Recaptcha::verify($recaptchaResponse, Security::getClientIP())) {
-                echo json_encode(['success' => false, 'message' => 'Please complete the reCAPTCHA verification']);
-                exit;
-            }
 
             $username = Security::sanitize($_POST['username'] ?? '');
             $password = $_POST['password'] ?? '';
@@ -194,12 +188,6 @@ class AuthController
                 exit;
             }
 
-            // Verify reCAPTCHA
-            $recaptchaResponse = $_POST['g-recaptcha-response'] ?? '';
-            if (!Recaptcha::verify($recaptchaResponse, Security::getClientIP())) {
-                echo json_encode(['success' => false, 'message' => 'Please complete the reCAPTCHA verification']);
-                exit;
-            }
 
             $usernameOrEmail = Security::sanitize($_POST['username'] ?? '');
             $password = $_POST['password'] ?? '';
@@ -302,12 +290,6 @@ class AuthController
                 exit;
             }
 
-            // Verify reCAPTCHA
-            $recaptchaResponse = $_POST['g-recaptcha-response'] ?? '';
-            if (!Recaptcha::verify($recaptchaResponse, Security::getClientIP())) {
-                echo json_encode(['success' => false, 'message' => 'Please complete the reCAPTCHA verification']);
-                exit;
-            }
 
             $email = Security::sanitize($_POST['email'] ?? '');
             $isStaff = isset($_POST['is_staff']) && $_POST['is_staff'] === '1';
